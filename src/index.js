@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     projectCards.forEach(card => {
         const githubLink = card.querySelector('img[src*="github"]');
-        const externalLink = card.querySelector('img[alt="Open in New Tab"]');
+        const externalLink = card.querySelector('.open-new');
 
         // Open GitHub link in a new tab
         if (githubLink) {

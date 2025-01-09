@@ -215,6 +215,18 @@ img:hover {
     gap: 1rem;
 }
 
+.phone {
+    background-image: url(./assets/phone.png);
+}
+
+.mail {
+    background-image: url(./assets/mail.png);
+}
+
+.open-new {
+    background-image: url(./assets/open-in-new.png);
+}
+
 .contact .links {
     justify-content: start;
 }
