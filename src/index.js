@@ -1,9 +1,24 @@
 import "./styles.css";
 
+// Import images from the assets folder
+import openInNewIcon from './assets/open-in-new.svg';
+import phoneIcon from './assets/phone.png';
+import mailIcon from './assets/mail.png';
+
 document.addEventListener('DOMContentLoaded', function () {
     const projectCards = document.querySelectorAll('.card');
 
     projectCards.forEach(card => {
+        // Get the project name and append images dynamically
+        const projectName = card.querySelector('.projectName');
+
+        // Create and append external link icon to project
+        const externalLinkImage = document.createElement('img');
+        externalLinkImage.src = openInNewIcon;
+        externalLinkImage.alt = "Open in New Tab";
+        externalLinkImage.classList.add('open-new');
+        projectName.appendChild(externalLinkImage);
+
         const githubLink = card.querySelector('img[src*="github"]');
         const externalLink = card.querySelector('.open-new');
 
@@ -11,8 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (githubLink) {
             githubLink.addEventListener('click', function (event) {
                 event.preventDefault();
-                const projectName = card.querySelector('.projectName').textContent.trim();
-                window.open(`https://github.com/yourusername/${projectName}`, '_blank');
+                window.open(`https://github.com/yourusername/${projectName.textContent.trim()}`, '_blank');
             });
         }
 
@@ -20,8 +34,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (externalLink) {
             externalLink.addEventListener('click', function (event) {
                 event.preventDefault();
-                const projectName = card.querySelector('.projectName').textContent.trim();
-                window.open(`https://yourwebsite.com/projects/${projectName}`, '_blank');
+                window.open(`https://yourwebsite.com/projects/${projectName.textContent.trim()}`, '_blank');
             });
         }
     });
@@ -53,4 +66,22 @@ document.addEventListener('DOMContentLoaded', function () {
             window.open(url, '_blank');
         });
     });
+
+    // Dynamically set contact icons
+    const contactPhone = document.querySelector('.contact .phone');
+    const contactMail = document.querySelector('.contact .mail');
+
+    if (contactPhone) {
+        const phoneImg = document.createElement('img');
+        phoneImg.src = phoneIcon;
+        phoneImg.alt = "Phone";
+        contactPhone.appendChild(phoneImg);
+    }
+
+    if (contactMail) {
+        const mailImg = document.createElement('img');
+        mailImg.src = mailIcon;
+        mailImg.alt = "Email";
+        contactMail.appendChild(mailImg);
+    }
 });
